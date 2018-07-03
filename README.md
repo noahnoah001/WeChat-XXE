@@ -1,3 +1,3 @@
-# WeChatPaySDK-XXE
+# WeChat-XXE
 
 
